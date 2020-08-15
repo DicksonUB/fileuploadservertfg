@@ -1,0 +1,94 @@
+<!Doctype html>
+<html>
+<head>
+  <title>Question uploading server</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-red.min.css" />
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  <!--Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body id="dropbox">
+  
+  <!-- MAIN PAGE CONTENT -->
+  <div class="center">
+    <img src="https://www.ub.edu/web/portal/assets/img/logo.png" alt="logouni" style="max-width: 20%; height: auto;">
+    <h2><b>UB VR TRIVIA Questions upload database</b></h2>
+    <h7>1.Choose or drag your questions file (all questions in one file) in a aiken format with the blue button.</h7>
+    <br>
+    <h7>2.Write a unique name for your question file that will be used to find the question set ingame.</h7>
+    <br>
+    <h7>3.Once step 1 is complete, the Upload button will activate, press it to upload the questions to the database.</h7>
+    <br>
+    <h7>4.Done!</h7>
+    <br>
+    <br>
+    <br>
+    <div style="text-align:center;">
+      <img src="https://moodleanswers.com/images/Aiken.jpg" alt="formatoGuia" style="max-width: 80%; height: auto;">
+      <br>
+      <br>
+      <br>
+      <h7>1.</h7>
+      <input type="file" id="real-file" hidden="hidden" />
+      <button id="chooseBtn" type="button" class="custom-button blue-button">Choose questions file</button>
+      <span id="custom-text">No file chosen, yet.</span>
+      <br>
+      <br>
+      <h7>2.</h7>
+      <h7>Id for the questions:</h7>
+      <input name="Id de las preguntas" type="text" maxlength="15" id="questionsId" style="line-height: 2em;">
+      
+      <h7>3.</h7>
+      <button id="uploadBtn" class="custom-button green-button" onclick="submitClick()">Upload</button>
+      <br>
+      <br>
+      <br>
+      <div id="loader"><div  class="page-loader mdl-spinner mdl-js-spinner is-active"></div></div>
+      <h7 id="errorMessage" style="color:red">Id allready exists</h7>
+      <br>
+      <br>
+      <br>
+    </div> 
+  </div>
+
+  
+  <!-- 
+  <div class="mainDiv" align="right">
+    <h1 align="left">Firebase web app</h1>
+    <textarea id="mainText" placeholder="Enter text"></textarea>
+    <button id="submitBtn" onclick="submitClick()"><i class="fa fa-arrow.right" aria-hidden="true"></i></button>
+  </div>
+  -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyACyW4RY2L4r0rK1rZQbU1qDBIfpvMas3Q",
+      authDomain: "vrtrivia-619c6.firebaseapp.com",
+      databaseURL: "https://vrtrivia-619c6.firebaseio.com",
+      projectId: "vrtrivia-619c6",
+      storageBucket: "vrtrivia-619c6.appspot.com",
+      messagingSenderId: "712725552428",
+      appId: "1:712725552428:web:f2cb33fad1a67b99926089",
+      measurementId: "G-V16CV70BRL"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+  <script src="index.js"></script>
+  <script type="text/javascript">
+    window.onload = hideElements;
+  </script>
+  </body>
+</html>

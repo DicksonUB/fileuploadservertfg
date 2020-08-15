@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  outline: none;
+}
+
+.page-title-span {
+  margin-left: 10px;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.custom-button {
+  padding: 10px;
+  color: white;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.green-button{
+  background-color: #0b9612;
+}
+.blue-button{
+  background-color: #1187e7;
+}
+.custom-button:hover {
+  background-color: #0c62a8;
+}
+
+#custom-text {
+  margin-left: 10px;
+  font-family: sans-serif;
+  color: #aaa;
+}
