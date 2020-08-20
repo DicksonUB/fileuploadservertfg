@@ -19,6 +19,8 @@ function submitClick(){
     if(datasnapshot.exists()){
       console.log("Error");
       errorMessage.style.display = "inline";
+      errorMessage.style.color = "red";
+      errorMessage.innerHTML = "Error: File with this id allready exists";
       
       questionsId.value = "";
       
@@ -27,11 +29,18 @@ function submitClick(){
     
       for (j = 0; j < questions.length; j++) {
         var nFields = questions[j].length;
-        parent.child(j+1).child("Inquiry").set(questions[j][0]);
+        parent.child(j+1).child("inquiry").set(questions[j][0]);
         for (k = 0; k < nFields-2; k++){
-          parent.child(j+1).child(k+1).set(questions[j][k+1]);
+          
+          parent.child(j+1).child("option" + k).set(questions[j][k+1]);
+          if(k==4){
+            errorMessage.style.display = "inline";
+            errorMessage.style.color = "red";
+            errorMessage.innerHTML = "Error: There is one or more questions witch contain more than 4 posible answers";
+            
+          }
         }
-        parent.child(j+1).child("Answer").set(questions[j][nFields-1]);
+        parent.child(j+1).child("answer").set(questions[j][nFields-1]);
       }
     }
   });
