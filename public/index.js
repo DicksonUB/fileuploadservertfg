@@ -20,9 +20,9 @@ function submitClick(){
       console.log("Error");
       errorMessage.style.display = "inline";
       errorMessage.style.color = "red";
-      errorMessage.innerHTML = "Error: File with this id allready exists";
-      
+      showError("Error: File with this id allready exists");
       questionsId.value = "";
+      return;
       
     }else{
       var parent  = firebaseRef;
@@ -34,21 +34,33 @@ function submitClick(){
           
           parent.child(j+1).child("option" + k).set(questions[j][k+1]);
           if(k==4){
-            errorMessage.style.display = "inline";
-            errorMessage.style.color = "red";
-            errorMessage.innerHTML = "Error: There is one or more questions witch contain more than 4 posible answers";
+            showError( "Error: There is one or more questions witch contain more than 4 posible answers");
+            parent.remove();
+            return;
             
           }
         }
         parent.child(j+1).child("answer").set(questions[j][nFields-1]);
       }
-    }
-  });
-  errorMessage.style.display = "inline";
-  errorMessage.style.color = "green";
-  errorMessage.innerHTML = "Uploaded!";
+      if(j<11){
+        showError( "Error: File contains less than 12 questions");
+        parent.remove();
+        return;
+      }
+      errorMessage.style.display = "inline";
+      errorMessage.style.color = "green";
+      errorMessage.innerHTML = "Uploaded!";
 
+    }
+
+  });
+  
   hideLoading();
+}
+function showError(message){
+  errorMessage.style.display = "inline";
+  errorMessage.style.color = "red";
+  errorMessage.innerHTML = message;
 }
 customBtn.addEventListener("click", function() {
   realFileBtn.click();
